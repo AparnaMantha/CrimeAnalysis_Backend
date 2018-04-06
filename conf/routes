@@ -1,0 +1,67 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# ----------------- Crime Details ---------------------
+GET /getDetails                          controllers.ExploreMap.getAllDetails()
+
+
+POST /getParticularDetails                  controllers.ExploreMap.getParticularDetails()
+
+POST /crime                              controllers.CrimeRegistration.registerCrime()
+
+
+POST /check                             daos.CrimeDao.nearByCrimes()
+
+
+
+# ----------------- Chart ---------------------
+
+GET /getAnalysis                          controllers.Analysis.getAnalysis()
+
+GET /getAnalysis1                          controllers.Analysis.getAnalysis1()
+
+GET /getAnalysis2                          controllers.Analysis.getAnalysis2()
+
+
+# ----------------- User ---------------------
+
+POST /createUser                        controllers.UserController.createUser()
+
+POST /login                       controllers.UserController.login()
+
+
+GET /users                              controllers.UserController.getAllUsers()
+
+
++ nocsrf
+GET /users/me                       controllers.UserController.getCurrentUser()
+
+
+
+# -----------------Update Profile ---------------------
+
+GET /mail/:email              controllers.MailerService.forgotPassword(email : String)
+
+
++ nocsrf
+POST /user/changeP                    controllers.UserController.updatePassword()
+
+
+#POST /user/newToken                    controllers.UserController.resetAccessToken()
+
+
+
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+# An example controller showing how to use dependency injection
+GET     /count                      controllers.CountController.count
+# An example controller showing how to write asynchronous code
+GET     /message                    controllers.AsyncController.message
+
+
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
